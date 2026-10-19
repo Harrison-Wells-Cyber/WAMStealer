@@ -3,7 +3,10 @@
 WAMStealer is a red team toolset for Microsoft Entra ID token acquisition
 through Windows Web Account Manager (WAM). The Windows agent silently requests
 access tokens for every account signed in to Windows and sends them to a Linux
-collection server over HTTPS. This project is currently untested slop.
+collection server over HTTPS.
+
+## Warning
+This project is currently untested slop. Not for use in production yet!
 
 ## Components
 
