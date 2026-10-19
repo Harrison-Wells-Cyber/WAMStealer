@@ -50,12 +50,12 @@ impl Failure {
         }
     }
 
-    pub fn token(status: i32, provider_error: Option<(u32, Option<u32>)>) -> Self {
+    pub fn token(status: i32, provider_error: Option<(u32, Option<String>)>) -> Self {
         let mut report = json!({"status": "token_error", "responseStatus": status});
-        if let Some((code, length)) = provider_error {
+        if let Some((code, message)) = provider_error {
             report["providerError"] = Value::String(hex_code(code));
-            if let Some(length) = length.filter(|n| *n != 0) {
-                report["providerMessageLength"] = json!(length);
+            if let Some(message) = message.filter(|text| !text.is_empty()) {
+                report["providerMessage"] = Value::String(message);
             }
         }
         Self {

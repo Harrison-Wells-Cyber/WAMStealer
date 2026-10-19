@@ -304,14 +304,14 @@ fn native_failure_codes_and_hresult_format_are_preserved() {
         failure.report,
         json!({"status":"runtime_error", "hresult":"0x80070102"})
     );
-    let failure = Failure::token(5, Some((0xCAA20003, Some(20))));
+    let failure = Failure::token(5, Some((0xCAA20003, Some("broker said no".into()))));
     assert_eq!(
         failure.report,
         json!({"status":"token_error", "responseStatus":5,
-        "providerError":"0xCAA20003", "providerMessageLength":20})
+        "providerError":"0xCAA20003", "providerMessage":"broker said no"})
     );
-    assert!(Failure::token(5, Some((0, Some(0))))
+    assert!(Failure::token(5, Some((0, Some(String::new()))))
         .report
-        .get("providerMessageLength")
+        .get("providerMessage")
         .is_none());
 }

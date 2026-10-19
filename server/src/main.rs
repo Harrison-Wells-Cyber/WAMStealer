@@ -32,7 +32,7 @@ struct Args {
     client_id: String,
     #[arg(long, default_value = "https://graph.microsoft.com/.default")]
     scope: String,
-    #[arg(long, default_value = "common")]
+    #[arg(long, default_value = "organizations")]
     authority: String,
     #[arg(long, default_value = "Microsoft\\OfficeTelemetry")]
     install_subdir: String,

