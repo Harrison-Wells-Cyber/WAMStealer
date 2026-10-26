@@ -105,3 +105,6 @@ Without `--server` the agent prints JSON reports instead of beaming:
 .\wamstealer.exe --client-id "APP_ID" --scope "SCOPE"
 .\wamstealer.exe --resource "RESOURCE" --cae
 ```
+
+## Credit
+This is a Rust port of the original askWAM tool by Dirk Jan Mollema, which is available at https://github.com/dirkjanm/askWAM
