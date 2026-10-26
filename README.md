@@ -5,13 +5,8 @@ through Windows Web Account Manager (WAM). The Windows agent silently requests
 access tokens for every account signed in to Windows and sends them to a Linux
 collection server over HTTPS.
 
-## Warning
-This project is currently untested slop. Not for use in production yet!
-
 ## Components
 
-- `wamstealer.exe` - the Windows agent. Requests tokens through WAM without any
-  prompt, for every WAM account, and beacons them to the server. Prints nothing.
 - `wamstealer-server` - the Linux collection server. Hosts the agent delivery
   script, hands runtime configuration to agents, and stores captured tokens.
 
