@@ -107,4 +107,4 @@ Without `--server` the agent prints JSON reports instead of beaming:
 ```
 
 ## Credit
-This is a Rust port of the original askWAM tool by Dirk Jan Mollema, which is available at https://github.com/dirkjanm/askWAM
+This is heavily based on the original askWAM tool by Dirk Jan Mollema, which is available at https://github.com/dirkjanm/askWAM
